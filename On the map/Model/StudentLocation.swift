@@ -15,8 +15,8 @@ struct StudentLocation:Codable {
     var lastName:String?
     var mapString:String?
     var mediaUrl:String?
-    var latitude:Float?
-    var longitude:Float?
+    var latitude:Double?
+    var longitude:Double?
     var createdAt:String?
     var updatedAt:String?
     

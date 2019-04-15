@@ -11,6 +11,8 @@
 		0C48B6532262751B00DFED8C /* PostSessionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C48B6522262751B00DFED8C /* PostSessionRequest.swift */; };
 		0C48B656226338ED00DFED8C /* DeleteSessionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C48B655226338ED00DFED8C /* DeleteSessionResponse.swift */; };
 		0C48B6582264F14A00DFED8C /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C48B6572264F14A00DFED8C /* MapVC.swift */; };
+		0C48B65C2265184500DFED8C /* MapDelegateMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C48B65B2265184500DFED8C /* MapDelegateMethods.swift */; };
+		0C48B65E22651DA800DFED8C /* LocationsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C48B65D22651DA800DFED8C /* LocationsModel.swift */; };
 		0C60F33E225E93D2005CB568 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C60F33D225E93D2005CB568 /* AppDelegate.swift */; };
 		0C60F340225E93D2005CB568 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C60F33F225E93D2005CB568 /* LoginVC.swift */; };
 		0C60F343225E93D2005CB568 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C60F341225E93D2005CB568 /* Main.storyboard */; };
@@ -27,6 +29,8 @@
 		0C48B6522262751B00DFED8C /* PostSessionRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostSessionRequest.swift; sourceTree = "<group>"; };
 		0C48B655226338ED00DFED8C /* DeleteSessionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteSessionResponse.swift; sourceTree = "<group>"; };
 		0C48B6572264F14A00DFED8C /* MapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MapVC.swift; path = "On the map/Controller/MapVC.swift"; sourceTree = SOURCE_ROOT; };
+		0C48B65B2265184500DFED8C /* MapDelegateMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDelegateMethods.swift; sourceTree = "<group>"; };
+		0C48B65D22651DA800DFED8C /* LocationsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsModel.swift; sourceTree = "<group>"; };
 		0C60F33A225E93D2005CB568 /* On the map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "On the map.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C60F33D225E93D2005CB568 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0C60F33F225E93D2005CB568 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
@@ -116,7 +120,6 @@
 			isa = PBXGroup;
 			children = (
 				0C60F341225E93D2005CB568 /* Main.storyboard */,
-				0C48B6572264F14A00DFED8C /* MapVC.swift */,
 				0C60F344225E93D5005CB568 /* Assets.xcassets */,
 				0C60F346225E93D5005CB568 /* LaunchScreen.storyboard */,
 			);
@@ -128,6 +131,8 @@
 			children = (
 				0C60F33D225E93D2005CB568 /* AppDelegate.swift */,
 				0C60F33F225E93D2005CB568 /* LoginVC.swift */,
+				0C48B6572264F14A00DFED8C /* MapVC.swift */,
+				0C48B65B2265184500DFED8C /* MapDelegateMethods.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -136,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				0C60F357225E9619005CB568 /* Client.swift */,
+				0C48B65D22651DA800DFED8C /* LocationsModel.swift */,
 				0C60F355225E95DE005CB568 /* StudentLocation.swift */,
 				0C48B651226274C600DFED8C /* On the map requests */,
 				0C60F354225E945F005CB568 /* On the map responses */,
@@ -226,10 +232,12 @@
 				0C48B656226338ED00DFED8C /* DeleteSessionResponse.swift in Sources */,
 				0C60F356225E95DE005CB568 /* StudentLocation.swift in Sources */,
 				0C48B6532262751B00DFED8C /* PostSessionRequest.swift in Sources */,
+				0C48B65C2265184500DFED8C /* MapDelegateMethods.swift in Sources */,
 				0C60F35A225FEA7D005CB568 /* GetLocationsResponse.swift in Sources */,
 				0C60F340225E93D2005CB568 /* LoginVC.swift in Sources */,
 				0C48B6582264F14A00DFED8C /* MapVC.swift in Sources */,
 				0C60F358225E9619005CB568 /* Client.swift in Sources */,
+				0C48B65E22651DA800DFED8C /* LocationsModel.swift in Sources */,
 				0C60F33E225E93D2005CB568 /* AppDelegate.swift in Sources */,
 				0C48B650226273B700DFED8C /* PostSessionResponse.swift in Sources */,
 				0C60F35C225FFEA6005CB568 /* PostLocationResponse.swift in Sources */,

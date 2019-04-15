@@ -20,18 +20,25 @@ class Client{
         case CredentialsError="CredentialsError"
     }
     
-    class func getStudentLocations(){
-        //let url=URL(string: "https://parse.udacity.com/parse/classes/StudentLocation")
-        let url=URL(string: "https://parse.udacity.com/parse/classes/StudentLocation?where=%7B%22objectId%22%3A%22jMBrNYevk5%22%7D")
-        var request=URLRequest(url: url!)
+    class func getStudentLocations(completionHandler:@escaping ([StudentLocation]?,Error?)->Void){
+        //number of fetched locations is 150 not 100 to handle the skipped nil valued locations
+        let url=URL(string: "https://parse.udacity.com/parse/classes/StudentLocation?limit=100?order=-updatedAt")!
+        var request=URLRequest(url: url)
         request.addValue(Auth.parseApplicationId, forHTTPHeaderField: "X-Parse-Application-Id")
         request.addValue(Auth.restApiKey, forHTTPHeaderField: "X-Parse-Rest-API-Key")
         let task=URLSession.shared.dataTask(with: request) { (data, response, error) in
             if error != nil{
+                completionHandler(nil,error)
                 return
             }
-            let results = try! JSONDecoder().decode(GetLocationsResponse.self, from: data!)
-            print(results)
+            do{
+                let results = try JSONDecoder().decode(GetLocationsResponse.self, from: data!)
+                completionHandler(results.results,nil)
+                print(results.results[0])
+            }
+            catch{
+                completionHandler(nil,error)
+            }
         }
         task.resume()
     }
