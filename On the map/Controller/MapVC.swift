@@ -41,7 +41,10 @@ class MapVC:UIViewController{
                 annotation.subtitle=location.mediaUrl!
                 self.annotations.append(annotation)
             }
+        DispatchQueue.main.async {
             self.mapView.addAnnotations(self.annotations)
+        }
+            
         }
     
     func showError(message:String,title:String){

@@ -18,17 +18,31 @@ extension MapVC:MKMapViewDelegate{
             pinView?.canShowCallout=true
             pinView?.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
             pinView?.pinTintColor = .purple
-            print("entered")
         }
+            
         else{
             pinView?.annotation=annotation
         }
+        self.mapView.reloadInputViews()
         return pinView
     }
 
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         let application=UIApplication.shared
-        application.open(URL(string: view.annotation!.subtitle! ?? "")!, options: [:], completionHandler: nil)
-        print("clicked")
+        var url:URL?=nil
+        if let subtitle=view.annotation?.subtitle!{
+            url=URL(string: subtitle)
+        }
+        if let url=url{
+            if application.canOpenURL(url){
+                application.open(url, options: [:], completionHandler: nil)
+            }
+            else{
+                self.showError(message: "The location URL is not a valid one", title: "Cannot open URL")
+            }
+        }
+        else if url==nil{
+            self.showError(message: "The location URL is not a valid one", title: "Cannot open URL")
+        }
     }
 }

@@ -28,7 +28,7 @@
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="nuN-ij-zwa"/>
                                         </constraints>
                                     </imageView>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gZ4-Rw-jSK" userLabel="username">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="mahmoud3341@gmail.com" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gZ4-Rw-jSK" userLabel="username">
                                         <rect key="frame" x="57" y="158" width="300" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="XIY-Sa-VDo"/>
@@ -38,7 +38,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" textContentType="email"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yQt-Ps-vgf" userLabel="password">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="caution-nanodegreesinside—" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yQt-Ps-vgf" userLabel="password">
                                         <rect key="frame" x="57" y="218" width="300" height="40"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -113,10 +113,10 @@
             </objects>
             <point key="canvasLocation" x="-1171" y="-90"/>
         </scene>
-        <!--View Controller-->
+        <!--Locations TableVC-->
         <scene sceneID="zWM-qL-jLO">
             <objects>
-                <viewController id="DkI-GW-ncu" sceneMemberID="viewController">
+                <viewController id="DkI-GW-ncu" customClass="LocationsTableVC" customModule="On_the_map" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VJx-yb-Tgu">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -180,6 +180,9 @@
                         <viewLayoutGuide key="safeArea" id="5vD-Kx-uHl"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="icon_listview-deselected" selectedImage="icon_listview-deselected" id="GNl-1Z-Kot"/>
+                    <connections>
+                        <outlet property="locationsTable" destination="rCX-e0-R7n" id="NJg-nC-9fd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qOc-h4-2eE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
