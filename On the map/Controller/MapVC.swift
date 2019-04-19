@@ -23,7 +23,7 @@ class MapVC:UIViewController{
     func handleLocationResponse(locations:[StudentLocation]?,error:Error?){
         if error != nil{
             DispatchQueue.main.async {
-                self.showError(message: "Error loading locations, please check your connection", title: "Error")
+                ErrorHandler.showError(vc: self, message: "Error loading locations, please check your connection", title: "Error")
                 return
                 }
             }
@@ -43,15 +43,8 @@ class MapVC:UIViewController{
             }
         DispatchQueue.main.async {
             self.mapView.addAnnotations(self.annotations)
-        }
+            }
             
         }
-    
-    func showError(message:String,title:String){
-        let alert=UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let okAction=UIAlertAction(title: "OK", style: .default, handler: nil)
-        alert.addAction(okAction)
-        self.present(alert, animated: true, completion: nil)
-    }
     
 }

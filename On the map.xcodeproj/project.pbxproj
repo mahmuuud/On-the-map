@@ -23,6 +23,12 @@
 		0C60F358225E9619005CB568 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C60F357225E9619005CB568 /* Client.swift */; };
 		0C60F35A225FEA7D005CB568 /* GetLocationsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C60F359225FEA7D005CB568 /* GetLocationsResponse.swift */; };
 		0C60F35C225FFEA6005CB568 /* PostLocationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C60F35B225FFEA6005CB568 /* PostLocationResponse.swift */; };
+		0C6377BB2268EA4B0066CB04 /* TabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6377BA2268EA4B0066CB04 /* TabBarVC.swift */; };
+		0C6377BD2268EB2D0066CB04 /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6377BC2268EB2D0066CB04 /* ErrorHandler.swift */; };
+		0C6377BF226900800066CB04 /* AddLocationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6377BE226900800066CB04 /* AddLocationVC.swift */; };
+		0C6377C12269019B0066CB04 /* NewLocationMapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6377C02269019B0066CB04 /* NewLocationMapVC.swift */; };
+		0C6377C5226A3DF50066CB04 /* NewLocationMapDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6377C4226A3DF50066CB04 /* NewLocationMapDelegate.swift */; };
+		0C6377C7226A5CC00066CB04 /* UserDetailsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6377C6226A5CC00066CB04 /* UserDetailsResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +50,12 @@
 		0C60F357225E9619005CB568 /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
 		0C60F359225FEA7D005CB568 /* GetLocationsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetLocationsResponse.swift; sourceTree = "<group>"; };
 		0C60F35B225FFEA6005CB568 /* PostLocationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostLocationResponse.swift; sourceTree = "<group>"; };
+		0C6377BA2268EA4B0066CB04 /* TabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarVC.swift; sourceTree = "<group>"; };
+		0C6377BC2268EB2D0066CB04 /* ErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
+		0C6377BE226900800066CB04 /* AddLocationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLocationVC.swift; sourceTree = "<group>"; };
+		0C6377C02269019B0066CB04 /* NewLocationMapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewLocationMapVC.swift; sourceTree = "<group>"; };
+		0C6377C4226A3DF50066CB04 /* NewLocationMapDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewLocationMapDelegate.swift; sourceTree = "<group>"; };
+		0C6377C6226A5CC00066CB04 /* UserDetailsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +83,7 @@
 			children = (
 				0C48B64F226273B700DFED8C /* PostSessionResponse.swift */,
 				0C48B655226338ED00DFED8C /* DeleteSessionResponse.swift */,
+				0C6377C6226A5CC00066CB04 /* UserDetailsResponse.swift */,
 			);
 			path = "Udacity Authentication Api ";
 			sourceTree = "<group>";
@@ -136,6 +149,11 @@
 				0C48B6572264F14A00DFED8C /* MapVC.swift */,
 				0C48B65B2265184500DFED8C /* MapDelegateMethods.swift */,
 				0C48B65F22654D8B00DFED8C /* LocationsTableVC.swift */,
+				0C6377BA2268EA4B0066CB04 /* TabBarVC.swift */,
+				0C6377BE226900800066CB04 /* AddLocationVC.swift */,
+				0C6377BC2268EB2D0066CB04 /* ErrorHandler.swift */,
+				0C6377C02269019B0066CB04 /* NewLocationMapVC.swift */,
+				0C6377C4226A3DF50066CB04 /* NewLocationMapDelegate.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -232,19 +250,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C6377BB2268EA4B0066CB04 /* TabBarVC.swift in Sources */,
 				0C48B656226338ED00DFED8C /* DeleteSessionResponse.swift in Sources */,
 				0C60F356225E95DE005CB568 /* StudentLocation.swift in Sources */,
+				0C6377C5226A3DF50066CB04 /* NewLocationMapDelegate.swift in Sources */,
 				0C48B6532262751B00DFED8C /* PostSessionRequest.swift in Sources */,
 				0C48B65C2265184500DFED8C /* MapDelegateMethods.swift in Sources */,
 				0C60F35A225FEA7D005CB568 /* GetLocationsResponse.swift in Sources */,
 				0C60F340225E93D2005CB568 /* LoginVC.swift in Sources */,
 				0C48B66022654D8B00DFED8C /* LocationsTableVC.swift in Sources */,
 				0C48B6582264F14A00DFED8C /* MapVC.swift in Sources */,
+				0C6377C12269019B0066CB04 /* NewLocationMapVC.swift in Sources */,
+				0C6377BF226900800066CB04 /* AddLocationVC.swift in Sources */,
 				0C60F358225E9619005CB568 /* Client.swift in Sources */,
 				0C48B65E22651DA800DFED8C /* LocationsModel.swift in Sources */,
 				0C60F33E225E93D2005CB568 /* AppDelegate.swift in Sources */,
+				0C6377BD2268EB2D0066CB04 /* ErrorHandler.swift in Sources */,
 				0C48B650226273B700DFED8C /* PostSessionResponse.swift in Sources */,
 				0C60F35C225FFEA6005CB568 /* PostLocationResponse.swift in Sources */,
+				0C6377C7226A5CC00066CB04 /* UserDetailsResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

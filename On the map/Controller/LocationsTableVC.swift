@@ -25,13 +25,6 @@ class LocationsTableVC:UIViewController,UITableViewDelegate,UITableViewDataSourc
         }
     }
     
-    func showError(message:String,title:String){
-        let alert=UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let okAction=UIAlertAction(title: "OK", style: .default, handler: nil)
-        alert.addAction(okAction)
-        self.present(alert, animated: true, completion: nil)
-    }
-    
     //MARK: Table view delegate methods
     internal func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell{
@@ -67,11 +60,11 @@ class LocationsTableVC:UIViewController,UITableViewDelegate,UITableViewDataSourc
                 application.open(url, options: [:], completionHandler: nil)
             }
             else{
-                self.showError(message: "The location URL is not a valid one", title: "Cannot open URL")
+                ErrorHandler.showError(vc: self, message: "The location URL is not a valid one", title: "Cannot open URL")
             }
         }
         else if url==nil{
-            self.showError(message: "The location URL is not a valid one", title: "Cannot open URL")
+            ErrorHandler.showError(vc: self, message: "The location URL is not a valid one", title: "Cannot open URL")
         }
     }
 }

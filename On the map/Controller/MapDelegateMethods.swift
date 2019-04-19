@@ -38,11 +38,11 @@ extension MapVC:MKMapViewDelegate{
                 application.open(url, options: [:], completionHandler: nil)
             }
             else{
-                self.showError(message: "The location URL is not a valid one", title: "Cannot open URL")
+                ErrorHandler.showError(vc: self, message: "The location URL is not a valid one", title: "Cannot open URL")
             }
         }
         else if url==nil{
-            self.showError(message: "The location URL is not a valid one", title: "Cannot open URL")
+            ErrorHandler.showError(vc: self, message: "The location URL is not a valid one", title: "Cannot open URL")
         }
     }
 }

@@ -47,13 +47,6 @@ class LoginVC: UIViewController {
         }
     }
     
-    func showError(message:String,title:String){
-        let alert=UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let okAction=UIAlertAction(title: "OK", style: .default, handler: nil)
-        alert.addAction(okAction)
-        self.present(alert, animated: true, completion: nil)
-    }
-    
     func handleLoginResponse(success:Bool,error:Error?,errorType:Client.ErrorType?){
         if success{
             DispatchQueue.main.async {
@@ -63,13 +56,13 @@ class LoginVC: UIViewController {
         }
         else if errorType == .CredentialsError{
             DispatchQueue.main.async {
-                self.showError(message: "Error logging in ,please check your credentials", title: "Login Failed!")
+                ErrorHandler.showError(vc: self, message: "Error logging in ,please check your credentials", title: "Login Failed!")
                 self.configureLoginUI(loggingIn: false)
             }
         }
         else{
             DispatchQueue.main.async {
-                self.showError(message: "Error logging in ,please check your Internet connection", title: "Login Failed!")
+                ErrorHandler.showError(vc: self, message: "Error logging in ,please check your Internet connection", title:  "Login Failed!")
                 self.configureLoginUI(loggingIn: false)
             }
         }

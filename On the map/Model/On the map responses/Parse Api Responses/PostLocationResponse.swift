@@ -8,6 +8,6 @@
 
 import Foundation
 struct PostLocationResponse:Codable {
-    var createdAt:String
-    var  objectId:String
+    var createdAt:String?
+    var  objectId:String?
 }

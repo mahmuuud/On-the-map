@@ -13,6 +13,9 @@ class Client{
     struct Auth {
          static let  restApiKey="QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY"
          static let  parseApplicationId="QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr"
+         static var key=""
+        static var firstName:String?=nil
+        static var lastName:String?=nil
     }
     
     enum ErrorType:String{
@@ -34,7 +37,6 @@ class Client{
             do{
                 let results = try JSONDecoder().decode(GetLocationsResponse.self, from: data!)
                 completionHandler(results.results,nil)
-                print(results.results[0])
             }
             catch{
                 completionHandler(nil,error)
@@ -43,22 +45,38 @@ class Client{
         task.resume()
     }
     
-    class func postStudentLocation(){
+    class func postStudentLocation(location:StudentLocation,completionHandler:@escaping(Bool,Error?)->Void){
         let url=URL(string: "https://parse.udacity.com/parse/classes/StudentLocation")!
         var request=URLRequest(url: url)
         request.httpMethod="POST"
         request.addValue(Auth.parseApplicationId, forHTTPHeaderField: "X-Parse-Application-Id")
         request.addValue(Auth.restApiKey, forHTTPHeaderField: "X-Parse-Rest-API-Key")
-        let location=StudentLocation.init(objectId: nil, uniqueKey: "3341", firstName: "hussam", lastName: "doe", mapString: "cph", mediaUrl: nil, latitude: nil, longitude: nil, createdAt: nil, updatedAt: nil)
-        let json=try! JSONEncoder().encode(location)
+        do{
+            let json=try JSONEncoder().encode(location)
+            request.httpBody=json
+        }
+        catch{
+            completionHandler(false,error)
+            return
+        }
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.httpBody=json
         let task=URLSession.shared.dataTask(with: request) { (data, response, error) in
             if error != nil{
+                completionHandler(false,error)
                 return
             }
-            let response=try! JSONDecoder().decode(PostLocationResponse.self, from: data!)
-            print(response)
+            do{
+                let response=try JSONDecoder().decode(PostLocationResponse.self, from: data!)
+                if(response.objectId != nil){
+                    completionHandler(false,error)
+                }
+                else{
+                    completionHandler(true,nil)
+                }
+            }
+            catch{
+                completionHandler(false,error)
+            }
         }
         task.resume()
     }
@@ -81,7 +99,8 @@ class Client{
             do{
                 let actualResponse=data!.subdata(in: 5..<data!.count)
                 let decoder=JSONDecoder()
-                _=try decoder.decode(PostSessionResponse.self, from: actualResponse)
+                let respone=try decoder.decode(PostSessionResponse.self, from: actualResponse)
+                Auth.key=respone.account.key!
                 completionHandler(true,nil,nil)
             }
             catch{
@@ -92,7 +111,28 @@ class Client{
         task.resume()
     }
     
-    class func deleteSession(completionHandler:@escaping(Bool,Error?)->Void){
+    class func getUserDetails(completionHandler:@escaping(Bool,Error?)->Void){
+        let url=URL(string: "https://onthemap-api.udacity.com/v1/users/\(Auth.key)")!
+        let request=URLRequest(url: url)
+        let task=URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if error != nil{
+                completionHandler(false,error)
+                return
+            }
+            do{
+                let data=try JSONDecoder().decode(User.self, from: data!.subdata(in: 5..<data!.count))
+                Auth.firstName=data.firstName
+                Auth.lastName=data.lastName
+                completionHandler(true,nil)
+            }
+            catch{
+                completionHandler(false,error)
+            }
+        }
+        task.resume()
+    }
+    
+    class func deleteSession(){
         let url=URL(string: "https://onthemap-api.udacity.com/v1/session")!
         var request=URLRequest(url: url)
         request.httpMethod="DELETE"
@@ -109,12 +149,40 @@ class Client{
         }
         let task=URLSession.shared.dataTask(with: request) { (data, response, error) in
             if error != nil{
-                completionHandler(false,error)
                 return
             }
             print("COOKIEEEE VALUEEEEEE: \(xsrfCookie?.value ?? "no value")")
             let response=try! JSONDecoder().decode(DeleteSessionResponse.self, from: data!.subdata(in: 5..<data!.count))
             print(response)
+        }
+        task.resume()
+    }
+    
+    class func getAccountLocation(completionHandler:@escaping(Bool?,Error?)->Void){
+        //each account location has a unique key equals to the account key
+        let url=URL(string: "https://parse.udacity.com/parse/classes/StudentLocation?where=%7B%22uniqueKey%22%3A%22\(Auth.key)%22%7D")!
+        getUserDetails()
+        var request=URLRequest(url: url)
+        request.addValue(Auth.parseApplicationId, forHTTPHeaderField: "X-Parse-Application-Id")
+        request.addValue(Auth.restApiKey, forHTTPHeaderField: "X-Parse-Rest-API-Key")
+        let task=URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if error != nil{
+                completionHandler(nil,error) //error occured during the request
+                return
+            }
+            do{
+                let location=try JSONDecoder().decode(StudentLocation.self, from: data!)
+                if location.uniqueKey==Auth.key{
+                    completionHandler(true,nil) //location exists for this account
+                }
+                else{
+                    completionHandler(false,nil)
+                }
+                print(location)
+            }
+            catch{
+                completionHandler(nil,error) //there's no location for that account
+            }
         }
         task.resume()
     }
