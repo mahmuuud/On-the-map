@@ -12,6 +12,9 @@ import MapKit
 
 class NewLocationMapVC: UIViewController {
     var locationName:String=""
+    var long:Double!
+    var lat:Double!
+    var mapUrl:String!
     @IBOutlet weak var mapView: MKMapView!
     
     override func viewDidLoad() {
@@ -33,6 +36,8 @@ class NewLocationMapVC: UIViewController {
                 let region=MKCoordinateRegion(center: coordinate , span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05))
                 let annotation=MKPointAnnotation()
                 annotation.coordinate=coordinate
+                self.lat=coordinate.latitude
+                self.long=coordinate.longitude
                 annotation.title=placemarks![0].name!
                 self.mapView.addAnnotation(annotation)
                 self.mapView.setRegion(region, animated: true)
@@ -45,8 +50,22 @@ class NewLocationMapVC: UIViewController {
     }
     
     @IBAction func finishAddingLocation(_ sender: Any) {
-        DispatchQueue.main.async {
-            self.dismiss(animated: true, completion: nil)
+        let newLocation=StudentLocation.init(mapString: locationName, mapUrl: mapUrl, latitude: lat, longitude: long)
+        Client.postStudentLocation(location: newLocation, completionHandler: handleAddingLocation(success:error:))
+        
+    }
+    
+    func handleAddingLocation(success:Bool,error:Error?){
+        if error != nil || !success{
+            DispatchQueue.main.async {
+                ErrorHandler.showError(vc: self, message: "Cannot add location, please try again later", title: "Cannot add new location")
+            }
+            return
+        }
+        if success{
+            DispatchQueue.main.async {
+                self.dismiss(animated: true, completion: nil)
+            }
         }
     }
     

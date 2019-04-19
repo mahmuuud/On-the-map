@@ -202,7 +202,7 @@
         <!--Add Location-->
         <scene sceneID="pwJ-Z7-He0">
             <objects>
-                <viewController id="5iF-zW-pxt" customClass="NewLocationMapVC" customModule="On_the_map" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="newLocationMap" id="5iF-zW-pxt" customClass="NewLocationMapVC" customModule="On_the_map" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qYJ-Na-iWi">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -285,7 +285,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <segue destination="5iF-zW-pxt" kind="show" id="nrC-P8-OgO"/>
+                                            <action selector="findLocation:" destination="eao-1U-Ony" eventType="touchUpInside" id="mtf-In-daG"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -307,11 +307,15 @@
                     <navigationItem key="navigationItem" title="Add Location" id="yAE-g8-AJe">
                         <barButtonItem key="leftBarButtonItem" title="CANCEL" id="cor-F7-8YD">
                             <color key="tintColor" red="0.29833157269999999" green="0.69003254579999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <connections>
+                                <action selector="cancelAddLocation:" destination="eao-1U-Ony" id="cbu-ew-KQd"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="locationName" destination="2UB-es-K5R" id="4MM-cD-Evs"/>
                         <outlet property="url" destination="T6g-wF-6ih" id="ShX-S0-L2K"/>
+                        <segue destination="5iF-zW-pxt" kind="show" identifier="geocode" id="f7A-TA-px1"/>
                     </connections>
                 </viewController>
             </objects>

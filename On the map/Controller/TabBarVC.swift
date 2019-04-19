@@ -44,11 +44,16 @@ class TabBarVC: UITabBarController {
                 let alert=UIAlertController(title: "Location Exists ", message: "A location exists for this account, would you like to overwrite it?", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Overwrite", style: .default, handler: {action in self.performSegue(withIdentifier: "addLocation", sender: self)}))
                 alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-                self.present(alert,animated: true,completion: nil)
+                DispatchQueue.main.async {
+                    self.present(alert,animated: true,completion: nil)
+                }
                 
             }
             else{
-                self.performSegue(withIdentifier: "addLocation", sender: self)
+                DispatchQueue.main.async {
+                    self.performSegue(withIdentifier: "addLocation", sender: self)
+
+                    }
                 }
             }
         }

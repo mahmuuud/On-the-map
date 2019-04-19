@@ -11,9 +11,9 @@ import Foundation
 
 class Client{
     struct Auth {
-         static let  restApiKey="QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY"
-         static let  parseApplicationId="QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr"
-         static var key=""
+        static let  restApiKey="QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY"
+        static let  parseApplicationId="QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr"
+        static var key=""
         static var firstName:String?=nil
         static var lastName:String?=nil
     }
@@ -67,7 +67,7 @@ class Client{
             }
             do{
                 let response=try JSONDecoder().decode(PostLocationResponse.self, from: data!)
-                if(response.objectId != nil){
+                if(response.objectId == nil){
                     completionHandler(false,error)
                 }
                 else{
@@ -95,38 +95,35 @@ class Client{
                 completionHandler(false,error,ErrorType.NetworkError) //network error
                 return
             }
-            print(String(data: data!.subdata(in: 5..<data!.count), encoding: .utf8)!)
             do{
                 let actualResponse=data!.subdata(in: 5..<data!.count)
                 let decoder=JSONDecoder()
                 let respone=try decoder.decode(PostSessionResponse.self, from: actualResponse)
                 Auth.key=respone.account.key!
+                getUserDetails() //just to get first and last names of the user
                 completionHandler(true,nil,nil)
             }
             catch{
                 completionHandler(false,error,ErrorType.CredentialsError) //credentials error
-                print(error ,"FROM CLIENT.POSTSESSION")
             }
         }
         task.resume()
     }
     
-    class func getUserDetails(completionHandler:@escaping(Bool,Error?)->Void){
+    class func getUserDetails(){
+        //no need to check for success
         let url=URL(string: "https://onthemap-api.udacity.com/v1/users/\(Auth.key)")!
         let request=URLRequest(url: url)
         let task=URLSession.shared.dataTask(with: request) { (data, response, error) in
             if error != nil{
-                completionHandler(false,error)
                 return
             }
             do{
                 let data=try JSONDecoder().decode(User.self, from: data!.subdata(in: 5..<data!.count))
                 Auth.firstName=data.firstName
                 Auth.lastName=data.lastName
-                completionHandler(true,nil)
             }
             catch{
-                completionHandler(false,error)
             }
         }
         task.resume()
@@ -151,17 +148,13 @@ class Client{
             if error != nil{
                 return
             }
-            print("COOKIEEEE VALUEEEEEE: \(xsrfCookie?.value ?? "no value")")
-            let response=try! JSONDecoder().decode(DeleteSessionResponse.self, from: data!.subdata(in: 5..<data!.count))
-            print(response)
         }
         task.resume()
     }
     
     class func getAccountLocation(completionHandler:@escaping(Bool?,Error?)->Void){
         //each account location has a unique key equals to the account key
-        let url=URL(string: "https://parse.udacity.com/parse/classes/StudentLocation?where=%7B%22uniqueKey%22%3A%22\(Auth.key)%22%7D")!
-        getUserDetails()
+        let url=URL(string: "https://parse.udacity.com/parse/classes/StudentLocation?where=%7B%22lastName%22%3A%22\(Auth.lastName ?? "")%22%7D")!
         var request=URLRequest(url: url)
         request.addValue(Auth.parseApplicationId, forHTTPHeaderField: "X-Parse-Application-Id")
         request.addValue(Auth.restApiKey, forHTTPHeaderField: "X-Parse-Rest-API-Key")
@@ -178,7 +171,6 @@ class Client{
                 else{
                     completionHandler(false,nil)
                 }
-                print(location)
             }
             catch{
                 completionHandler(nil,error) //there's no location for that account

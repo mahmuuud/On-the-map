@@ -32,4 +32,14 @@ struct StudentLocation:Codable {
         case createdAt
         case updatedAt
     }
+    
+     init(mapString:String,mapUrl:String,latitude:Double,longitude:Double){
+        self.uniqueKey=Client.Auth.key
+        self.firstName=Client.Auth.firstName
+        self.lastName=Client.Auth.lastName
+        self.mapString=mapString
+        self.mediaUrl=mapUrl
+        self.latitude=latitude
+        self.longitude=longitude
+    }
 }
