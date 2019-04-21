@@ -29,6 +29,7 @@
 		0C6377C12269019B0066CB04 /* NewLocationMapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6377C02269019B0066CB04 /* NewLocationMapVC.swift */; };
 		0C6377C5226A3DF50066CB04 /* NewLocationMapDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6377C4226A3DF50066CB04 /* NewLocationMapDelegate.swift */; };
 		0C6377C7226A5CC00066CB04 /* UserDetailsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6377C6226A5CC00066CB04 /* UserDetailsResponse.swift */; };
+		0C6377C9226B33430066CB04 /* GetLocationsErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6377C8226B33430066CB04 /* GetLocationsErrorResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,7 @@
 		0C6377C02269019B0066CB04 /* NewLocationMapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewLocationMapVC.swift; sourceTree = "<group>"; };
 		0C6377C4226A3DF50066CB04 /* NewLocationMapDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewLocationMapDelegate.swift; sourceTree = "<group>"; };
 		0C6377C6226A5CC00066CB04 /* UserDetailsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsResponse.swift; sourceTree = "<group>"; };
+		0C6377C8226B33430066CB04 /* GetLocationsErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetLocationsErrorResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +76,7 @@
 			children = (
 				0C60F359225FEA7D005CB568 /* GetLocationsResponse.swift */,
 				0C60F35B225FFEA6005CB568 /* PostLocationResponse.swift */,
+				0C6377C8226B33430066CB04 /* GetLocationsErrorResponse.swift */,
 			);
 			path = "Parse Api Responses";
 			sourceTree = "<group>";
@@ -261,6 +264,7 @@
 				0C48B66022654D8B00DFED8C /* LocationsTableVC.swift in Sources */,
 				0C48B6582264F14A00DFED8C /* MapVC.swift in Sources */,
 				0C6377C12269019B0066CB04 /* NewLocationMapVC.swift in Sources */,
+				0C6377C9226B33430066CB04 /* GetLocationsErrorResponse.swift in Sources */,
 				0C6377BF226900800066CB04 /* AddLocationVC.swift in Sources */,
 				0C60F358225E9619005CB568 /* Client.swift in Sources */,
 				0C48B65E22651DA800DFED8C /* LocationsModel.swift in Sources */,

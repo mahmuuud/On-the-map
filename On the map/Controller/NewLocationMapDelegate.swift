@@ -8,8 +8,9 @@
 
 import Foundation
 import MapKit
-
+import UIKit
 extension NewLocationMapVC:MKMapViewDelegate{
+    
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: "PinView") as? MKPinAnnotationView
         if pinView==nil{

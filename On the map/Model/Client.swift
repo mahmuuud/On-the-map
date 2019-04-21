@@ -25,7 +25,7 @@ class Client{
     
     class func getStudentLocations(completionHandler:@escaping ([StudentLocation]?,Error?)->Void){
         //number of fetched locations is 150 not 100 to handle the skipped nil valued locations
-        let url=URL(string: "https://parse.udacity.com/parse/classes/StudentLocation?limit=100?order=-updatedAt")!
+        let url=URL(string: "https://parse.udacity.com/parse/classes/StudentLocation?limit=100&order=-updatedAt")!
         var request=URLRequest(url: url)
         request.addValue(Auth.parseApplicationId, forHTTPHeaderField: "X-Parse-Application-Id")
         request.addValue(Auth.restApiKey, forHTTPHeaderField: "X-Parse-Rest-API-Key")
@@ -34,13 +34,14 @@ class Client{
                 completionHandler(nil,error)
                 return
             }
-            do{
-                let results = try JSONDecoder().decode(GetLocationsResponse.self, from: data!)
-                completionHandler(results.results,nil)
-            }
-            catch{
-                completionHandler(nil,error)
-            }
+                do{
+                    let results = try JSONDecoder().decode(GetLocationsResponse.self, from: data!)
+                    completionHandler(results.results,nil)
+                }
+                catch{
+                    completionHandler(nil,error)
+                }
+            
         }
         task.resume()
     }

@@ -21,14 +21,18 @@ class MapVC:UIViewController{
     }
     
     func handleLocationResponse(locations:[StudentLocation]?,error:Error?){
-        if error != nil{
+        if error != nil || locations==nil {
             DispatchQueue.main.async {
                 ErrorHandler.showError(vc: self, message: "Error loading locations, please check your connection", title: "Error")
                 return
                 }
             }
-            LocationsModel.locations=locations!
-            for location in LocationsModel.locations{
+        if let locations=locations{
+            LocationsModel.locations=locations
+        }
+        
+        
+        for location in LocationsModel.locations{
                 if location.firstName==nil || location.lastName==nil || location.longitude==nil || location.latitude==nil || location.mediaUrl==nil{
                     continue
                 }

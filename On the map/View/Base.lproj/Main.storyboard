@@ -85,16 +85,16 @@
                                     </activityIndicatorView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="Mcm-3F-vjC" firstAttribute="height" secondItem="yQt-Ps-vgf" secondAttribute="height" id="AcQ-Os-CkR"/>
+                                    <constraint firstItem="Mcm-3F-vjC" firstAttribute="width" secondItem="gZ4-Rw-jSK" secondAttribute="width" id="0fF-6e-X9u"/>
                                     <constraint firstItem="yQt-Ps-vgf" firstAttribute="height" secondItem="gZ4-Rw-jSK" secondAttribute="height" id="FjG-wk-hSh"/>
                                     <constraint firstItem="yQt-Ps-vgf" firstAttribute="width" secondItem="gZ4-Rw-jSK" secondAttribute="width" id="RUt-nP-vtD"/>
-                                    <constraint firstItem="Mcm-3F-vjC" firstAttribute="width" secondItem="yQt-Ps-vgf" secondAttribute="width" id="cSb-rr-3fD"/>
+                                    <constraint firstItem="Mcm-3F-vjC" firstAttribute="height" secondItem="gZ4-Rw-jSK" secondAttribute="height" id="cEm-et-FdN"/>
                                 </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="56t-hV-2rw" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="-300" id="8aM-KJ-XbC"/>
+                            <constraint firstItem="56t-hV-2rw" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="-300" id="8aM-KJ-XbC"/>
                             <constraint firstItem="56t-hV-2rw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="XPc-1V-sdD"/>
                             <constraint firstItem="56t-hV-2rw" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="nFX-21-tjR"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="56t-hV-2rw" secondAttribute="trailing" id="uYE-Zf-nrW"/>
@@ -239,7 +239,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Add Location" id="hwX-HX-pV6"/>
                     <connections>
-                        <outlet property="mapView" destination="ifc-Fl-KlV" id="aao-Cz-iun"/>
+                        <outlet property="mapView" destination="ifc-Fl-KlV" id="fo7-1e-sXs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RYM-kF-uMv" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -261,7 +261,7 @@
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_world" translatesAutoresizingMaskIntoConstraints="NO" id="QuF-yZ-72K">
                                         <rect key="frame" x="124" y="0.0" width="52" height="67"/>
                                     </imageView>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2UB-es-K5R">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Cairo" borderStyle="roundedRect" placeholder="Location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2UB-es-K5R">
                                         <rect key="frame" x="0.0" y="87" width="300" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="QE4-Q4-FEy"/>
@@ -288,6 +288,9 @@
                                             <action selector="findLocation:" destination="eao-1U-Ony" eventType="touchUpInside" id="mtf-In-daG"/>
                                         </connections>
                                     </button>
+                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Wq4-r2-b6Q">
+                                        <rect key="frame" x="140" y="247" width="20" height="0.0"/>
+                                    </activityIndicatorView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="T6g-wF-6ih" firstAttribute="height" secondItem="2UB-es-K5R" secondAttribute="height" id="3yO-pl-AeF"/>
@@ -313,6 +316,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIndicator" destination="Wq4-r2-b6Q" id="Yin-VH-uW4"/>
                         <outlet property="locationName" destination="2UB-es-K5R" id="4MM-cD-Evs"/>
                         <outlet property="url" destination="T6g-wF-6ih" id="ShX-S0-L2K"/>
                         <segue destination="5iF-zW-pxt" kind="show" identifier="geocode" id="f7A-TA-px1"/>
