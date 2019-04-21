@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginVC: UIViewController {
+class LoginVC: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var username: UITextField!
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
@@ -17,6 +17,8 @@ class LoginVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         activityIndicator.stopAnimating()
+        username.delegate=self
+        password.delegate=self
     }
 
     @IBAction func login(_ sender: Any) {
@@ -66,6 +68,12 @@ class LoginVC: UIViewController {
                 self.configureLoginUI(loggingIn: false)
             }
         }
+    }
+    
+    //MARK: textfield delegate methods
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return true
     }
 }
 

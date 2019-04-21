@@ -76,5 +76,11 @@ class AddLocationVC: UIViewController,UITextFieldDelegate {
             
         }
     }
+    
+    //MARK: textfield delegate methods
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return true
+    }
 
 }
