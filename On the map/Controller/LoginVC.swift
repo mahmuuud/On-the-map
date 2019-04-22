@@ -44,8 +44,6 @@ class LoginVC: UIViewController,UITextFieldDelegate {
         
         else{
             activityIndicator.stopAnimating()
-            username.text=""
-            password.text=""
         }
     }
     

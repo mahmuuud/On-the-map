@@ -62,7 +62,7 @@ class AddLocationVC: UIViewController,UITextFieldDelegate {
             }
             let location=placemarks![0].location
             if let coordinate=location?.coordinate{
-                let region=MKCoordinateRegion(center: coordinate , span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05))
+                let region=MKCoordinateRegion(center: coordinate , span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
                 DispatchQueue.main.async {
                     self.newRegion=region
                     self.performSegue(withIdentifier: "geocode", sender: self)
